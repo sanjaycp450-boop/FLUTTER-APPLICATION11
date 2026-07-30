@@ -74,6 +74,14 @@ class _HOME_1State extends State<HOME_1> {
       'unread': null,
       'type': 'personal',
     },
+    {
+      'image': "assets/image/Rectangle 1092 (1).png",
+      'name': "Sabila Sayma",
+      'message': "How are you today",
+      'time': "2 min ago",
+      'unread': null,
+      'type': 'personal',
+    },
   ];
 
   @override

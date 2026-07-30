@@ -129,7 +129,7 @@ class _MassegeState extends State<Massege> {
             child: Text("Today"),
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 54),
 
           Expanded(
             child: ListView(
@@ -155,7 +155,7 @@ class _MassegeState extends State<Massege> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 14),
                       Text(
                         "09:25 AM",
                         style: TextStyle(color: Colors.grey, fontSize: 11),
@@ -171,7 +171,9 @@ class _MassegeState extends State<Massege> {
                   children: [
                     CircleAvatar(
                       radius: 22,
-                      backgroundImage: AssetImage("assets/profile.jpg"),
+                      backgroundImage: AssetImage(
+                        "assets/image/Rectangle 1092.png",
+                      ),
                     ),
 
                     SizedBox(width: 10),
@@ -187,6 +189,7 @@ class _MassegeState extends State<Massege> {
                         SizedBox(height: 8),
 
                         Container(
+                      
                           padding: EdgeInsets.all(14),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade200,
@@ -206,7 +209,7 @@ class _MassegeState extends State<Massege> {
                   ],
                 ),
 
-                SizedBox(height: 35),
+                SizedBox(height: 165),
 
                 /// Receiver 2
                 Row(
@@ -262,7 +265,7 @@ class _MassegeState extends State<Massege> {
                   ],
                 ),
 
-                SizedBox(height: 25),
+                SizedBox(height: 70),
 
                 /// Voice Message
                 Align(

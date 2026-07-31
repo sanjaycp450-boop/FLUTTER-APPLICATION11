@@ -181,7 +181,7 @@ class _HOME_1State extends State<HOME_1> {
             ),
           ),
           Container(
-            height: 587,
+            height:488,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.white,

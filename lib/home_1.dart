@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'massege.dart';
 
@@ -75,10 +76,10 @@ class _HOME_1State extends State<HOME_1> {
       'type': 'personal',
     },
     {
-      'image': "assets/image/Rectangle 1092 (1).png",
-      'name': "Sabila Sayma",
-      'message': "How are you today",
-      'time': "2 min ago",
+      'image': "assets/image/Rectangle 1094.png",
+      'name': "Angel Dayna",
+      'message': "",
+      'time': "",
       'unread': null,
       'type': 'personal',
     },
@@ -197,97 +198,130 @@ class _HOME_1State extends State<HOME_1> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(20),
-                  child: GestureDetector(
-                    onTap:(){
-Navigator.of(context).push(
-  MaterialPageRoute(builder: (context)=>Massege(
-     chats[index]['image'] ?? '',
-  chats[index]['image1'] ?? '',
-  chats[index]['image2'] ?? '',
-  chats[index]['image3'] ?? '',
-  name: chats[index]['name'] ?? '',
-  type: chats[index]['type'] ?? '',
-  ),)
-);
+                  child: Slidable(
+                    endActionPane: ActionPane(
+                      motion: const ScrollMotion(),
+                      extentRatio: 0.45,
+                      children: [
+                        SlidableAction(
+                          onPressed: (context) {
+                            print("Delete");
+                          },
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: "Delete",
+                        ),
 
-
-
-
-                    },
-                    child: ListTile(
-                    leading: chats[index]['type'] == 'personal'
-                        ? CircleAvatar(
-                            radius: 28,
-                            backgroundImage: AssetImage(chats[index]['image']),
-                          )
-                        : SizedBox(
-                            width: 60,
-                            height: 60,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 0,
-                                  top: 10,
-                                  child: CircleAvatar(
-                                    radius: 16,
-                                    backgroundImage: AssetImage(chats[index]['image1']),
-                                  ),
-                                ),
-                                Positioned(
-                                  right: 0,
-                                  top: 10,
-                                  child: CircleAvatar(
-                                    radius: 16,
-                                    backgroundImage: AssetImage(chats[index]['image2']),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 15,
-                                  bottom: 0,
-                                  child: CircleAvatar(
-                                    radius: 16,
-                                    backgroundImage: AssetImage(chats[index]['image3']),
-                                  ),
-                                ),
-                              ],
+                        SlidableAction(
+                          onPressed: (context) {
+                            print("More");
+                          },
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white,
+                          icon: Icons.more_horiz,
+                          label: "More",
+                        ),
+                      ],
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Massege(
+                              chats[index]['image'] ?? '',
+                              chats[index]['image1'] ?? '',
+                              chats[index]['image2'] ?? '',
+                              chats[index]['image3'] ?? '',
+                              name: chats[index]['name'] ?? '',
+                              type: chats[index]['type'] ?? '',
                             ),
                           ),
-                      title: Text(
-                        chats[index]['name'],
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                      subtitle: Text(chats[index]['message']),
-                      trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(chats[index]['time']),
-                          SizedBox(height: 8),
-                          if (chats[index]['unread'] != null)
-                            Container(
-                              height: 24,
-                              width: 24,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                shape: BoxShape.circle,
+                        );
+                      },
+                      child: ListTile(
+                        leading: chats[index]['type'] == 'personal'
+                            ? CircleAvatar(
+                                radius: 28,
+                                backgroundImage: AssetImage(
+                                  chats[index]['image'],
+                                ),
+                              )
+                            : SizedBox(
+                                width: 60,
+                                height: 60,
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      left: 0,
+                                      top: 10,
+                                      child: CircleAvatar(
+                                        radius: 16,
+                                        backgroundImage: AssetImage(
+                                          chats[index]['image1'],
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      right: 0,
+                                      top: 10,
+                                      child: CircleAvatar(
+                                        radius: 16,
+                                        backgroundImage: AssetImage(
+                                          chats[index]['image2'],
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      left: 15,
+                                      bottom: 0,
+                                      child: CircleAvatar(
+                                        radius: 16,
+                                        backgroundImage: AssetImage(
+                                          chats[index]['image3'],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              child: Center(
-                                child: Text(
-                                  chats[index]['unread'] ?? '',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
+                        title: Text(
+                          chats[index]['name'],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        subtitle: Text(chats[index]['message']),
+                        trailing: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(chats[index]['time']),
+                            const SizedBox(height: 8),
+                            if (chats[index]['unread'] != null)
+                              Container(
+                                height: 24,
+                                width: 24,
+                                decoration: const BoxDecoration(
+                                  color: Colors.red,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    chats[index]['unread'] ?? '',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                );
+);
               },
             ),
           ),

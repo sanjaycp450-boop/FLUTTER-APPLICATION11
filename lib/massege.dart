@@ -32,80 +32,16 @@ class _MassegeState extends State<Massege> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: Colors.black),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         titleSpacing: 0,
         title: Row(
           children: [
-            Stack(
-              children: [
-              widget.type == 'personal'?  CircleAvatar(
-                  radius: 22,
-                  backgroundImage:  AssetImage(widget.image),
-                ):SizedBox(
-                            width: 60,
-                            height: 60,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 0,
-                                  top: 10,
-                                  child: CircleAvatar(
-                                    radius: 16,
-                                    backgroundImage: AssetImage(widget.image1),
-                                  ),
-                                ),
-                                Positioned(
-                                  right: 0,
-                                  top: 10,
-                                  child: CircleAvatar(
-                                    radius: 16,
-                                    backgroundImage: AssetImage(widget.image2),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 15,
-                                  bottom: 0,
-                                  child: CircleAvatar(
-                                    radius: 16,
-                                    backgroundImage: AssetImage(widget.image3),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                Positioned(
-                  bottom: 2,
-                  right: 2,
-                  child: Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      border: Border.all(color: Colors.white, width: 2),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.name,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Text(
-                  "Active now",
-                  style: TextStyle(color: Colors.grey, fontSize: 13),
-                ),
-              ],
-            ),
+            // Your existing code
           ],
         ),
         actions: [
@@ -115,7 +51,6 @@ class _MassegeState extends State<Massege> {
           SizedBox(width: 15),
         ],
       ),
-
       body: Column(
         children: [
           SizedBox(height: 10),

@@ -41,16 +41,40 @@ class _MassegeState extends State<Massege> {
         titleSpacing: 0,
         title: Row(
           children: [
-            // Your existing code
+          
           ],
         ),
         actions: [
-          Icon(Icons.call_outlined, color: Colors.black),
-          SizedBox(width: 20),
-          Icon(Icons.videocam_outlined, color: Colors.black),
-          SizedBox(width: 15),
-        ],
-      ),
+    IconButton(
+      icon: const Icon(Icons.call_outlined, color: Colors.black),
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Call'),
+            content: Text('Call ${widget.name}?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  // call function here
+                },
+                child: const Text('Call'),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    const SizedBox(width: 20),
+    const Icon(Icons.videocam_outlined, color: Colors.black),
+    const SizedBox(width: 15),
+  ],
+),
       body: Column(
         children: [
           SizedBox(height: 10),
@@ -307,8 +331,12 @@ class _MassegeState extends State<Massege> {
               ),
             ),
           ),
+          
+          
         ],
+        
       ),
+      
     );
   }
 }

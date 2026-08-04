@@ -181,7 +181,7 @@ class _HOME_1State extends State<HOME_1> {
             ),
           ),
           Container(
-            height:488,
+            height:364,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -192,7 +192,7 @@ class _HOME_1State extends State<HOME_1> {
             ),
 
             child: ListView.builder(
-              padding: EdgeInsets.all(0),
+              padding: EdgeInsets.zero,
               scrollDirection: Axis.vertical,
               itemCount: chats.length,
               itemBuilder: (context, index) {

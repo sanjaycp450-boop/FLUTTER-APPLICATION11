@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'sent_gift.dart';
+
 class GiftPage extends StatefulWidget {
   const GiftPage({super.key});
 
@@ -23,7 +25,9 @@ class _GiftPageState extends State<GiftPage> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Sentgift()),
+                      );
                     },
                     icon: const Icon(Icons.arrow_back, color: Colors.white),
                   ),

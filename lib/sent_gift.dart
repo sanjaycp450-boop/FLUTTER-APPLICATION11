@@ -141,7 +141,7 @@ class _SentgiftState extends State<Sentgift> {
                         ),
                       SizedBox(width: 12),
                          Text(
-                          "0",
+                          "000",
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w500,
@@ -164,7 +164,7 @@ class _SentgiftState extends State<Sentgift> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // VIP Package title
+                  
                     Text(
                       'VIP Package',
                       style: TextStyle(

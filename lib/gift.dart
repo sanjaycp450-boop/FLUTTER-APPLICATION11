@@ -13,26 +13,24 @@ class _GiftPageState extends State<GiftPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF08B5A5),
+      backgroundColor: Color(0xFF08B5A5),
 
       body: SafeArea(
         child: Column(
           children: [
             // Top bar
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: Row(
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Sentgift()),
-                      );
+                      Navigator.pop(context);
                     },
-                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                    icon: Icon(Icons.arrow_back, color: Colors.white),
                   ),
 
-                  const Expanded(
+                  Expanded(
                     child: Center(
                       child: Text(
                         "Sent a Gift",
@@ -45,13 +43,14 @@ class _GiftPageState extends State<GiftPage> {
                     ),
                   ),
 
-                  const SizedBox(width: 48),
+                  SizedBox(width: 48),
                 ],
               ),
             ),
 
-            const Spacer(),
+            Spacer(),
 
+            // Image
             Image.asset(
               'assets/image/c00a1887d3c86fccca8d6baa0b3cb5be7839874e.png',
               width: 273,
@@ -59,26 +58,38 @@ class _GiftPageState extends State<GiftPage> {
               fit: BoxFit.contain,
             ),
 
-            const SizedBox(height: 40), // Continue button
+            SizedBox(height: 40),
             SizedBox(
               width: 250,
               height: 55,
               child: ElevatedButton(
                 onPressed: () {
-                  // Continue button action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Sentgift()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  foregroundColor: const Color(0xFF08B5A5),
+                  foregroundColor: Color(0xFF08B5A5),
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                child: const Text(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
                   "Continue",
                   style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    Icon(Icons.arrow_forward_ios, size: 20),
+                  ],
                 ),
               ),
             ),

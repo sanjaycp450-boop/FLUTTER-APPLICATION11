@@ -247,15 +247,21 @@ class _SentgiftState extends State<Sentgift> {
 
                           SizedBox(height: 20),
 
-                          Container(
+                          SizedBox(
                             width: double.infinity,
                             height: 43,
-                            decoration: BoxDecoration(
-                              color:  Color(0xff00aa9d),
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child:  Center(
-                              child: Text(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                // Button action here
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xff00aa9d),
+                                elevation: 4,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                              ),
+                              child: const Text(
                                 '\$ 33,444 / Month \$ 56.66',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -417,24 +423,24 @@ class CoinCard extends StatelessWidget {
               ),
             ),
 
-           SizedBox(height: 8),
-
-          // Price button
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 38,
-            decoration: BoxDecoration(
-              color:  Color(0xff00aa9d),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Center(
-              child: Text(
-                price,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+            child: ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text('Selected: $price')));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xff00aa9d),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
+                elevation: 2,
               ),
+              child: Text(price, style: TextStyle(fontWeight: FontWeight.bold)),
             ),
           ),
         ],

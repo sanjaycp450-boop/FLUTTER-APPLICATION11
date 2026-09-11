@@ -436,6 +436,11 @@ class CoinCard extends StatelessWidget {
             height: 38,
             child: ElevatedButton(
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GooglePay()),
+                );
+                                
                 ScaffoldMessenger.of(
                   context,
                 ).showSnackBar(SnackBar(content: Text('Selected: $price')));

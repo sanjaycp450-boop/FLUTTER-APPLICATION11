@@ -10,7 +10,8 @@ class GooglePay extends StatefulWidget {
 class _GooglePayState extends State<GooglePay> {
   @override
   Widget build(BuildContext context) {
-    return   Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
         width: double.infinity,
         height: 262,
@@ -24,7 +25,7 @@ class _GooglePayState extends State<GooglePay> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-    
+            // Header
             Container(
               width: double.infinity,
               padding: const EdgeInsets.fromLTRB(
@@ -51,7 +52,7 @@ class _GooglePayState extends State<GooglePay> {
               ),
             ),
 
-    
+            // Main content
             Padding(
               padding: const EdgeInsets.fromLTRB(
                 18,
@@ -112,33 +113,38 @@ class _GooglePayState extends State<GooglePay> {
 
                   const SizedBox(height: 22),
 
-                  
-                  Container(
-                    height: 34,
+            
+                  SizedBox(
                     width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF24A395),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.credit_card,
-                          color: Color(0xFF72D5E5),
-                          size: 25,
+                    height: 34,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF24A395),
+                        foregroundColor: Colors.white,
+                        elevation: 0,
+                        padding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
-
-                        const SizedBox(width: 18),
-
-                        const Text(
-                          "Add credit or debit card",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.credit_card,
+                            color: Color(0xFF72D5E5),
+                            size: 25,
                           ),
-                        ),
-                      ],
+
+                          SizedBox(width: 18),
+
+                          Text(
+                            "Add credit or debit card",
+                            style: TextStyle(color: Colors.white, fontSize: 10),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

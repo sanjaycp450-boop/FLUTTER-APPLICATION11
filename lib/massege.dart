@@ -348,7 +348,7 @@ class _MassegeState extends State<Massege> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      // Handle attach file action
+
                       buildAttachBottomSheet(context);
                     },
                     child: Icon(Icons.attach_file),
@@ -438,7 +438,7 @@ class _MassegeState extends State<Massege> {
                       ),
                     ),
 
-                    // Empty space to keep title centered
+             
                     const SizedBox(width: 32),
                   ],
                 ),

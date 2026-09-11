@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'google_pay.dart';
+
 class Sentgift extends StatefulWidget {
   const Sentgift({super.key});
 
@@ -252,7 +254,13 @@ class _SentgiftState extends State<Sentgift> {
                             height: 43,
                             child: ElevatedButton(
                               onPressed: () {
-                                // Button action here
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GooglePay(),
+                                  ),
+                                );
+                                
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xff00aa9d),

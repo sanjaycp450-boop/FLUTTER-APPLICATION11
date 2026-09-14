@@ -330,6 +330,28 @@ class _SentgiftState extends State<Sentgift> {
     );
   }
 }
+void openBottomsheet(
+  BuildContext context,
+  String price,
+){
+  showModalBottomSheet(context: context, 
+  backgroundColor: Colors.transparent,
+  isScrollControlled: true,
+  builder: (bottomSheetContext){
+    return Container(
+      width: double.infinity,
+      height: 262,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
+        ),
+      ),
+      child: Padding(padding: padding),
+    )
+  })
+}
 
 
 class CoinCard extends StatelessWidget {

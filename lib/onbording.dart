@@ -77,7 +77,7 @@ class _OnbordingState extends State<Onbording> {
                   ),
                 ),
               ),
-              const SizedBox(height:30),
+              const SizedBox(height:8),
                Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -88,7 +88,7 @@ class _OnbordingState extends State<Onbording> {
                   socialButton(Icons.apple, Colors.white),
                 ],
               ),
-              const SizedBox(height: 35),
+              const SizedBox(height: 25),
                Row(
                 children: [
                   Expanded(
@@ -159,7 +159,7 @@ class _OnbordingState extends State<Onbording> {
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -170,7 +170,7 @@ class _OnbordingState extends State<Onbording> {
   Widget socialButton(IconData icon, Color color) {
     return Container(
       width: 70,
-      height: 70,
+      height: 50,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(color: Colors.white30,

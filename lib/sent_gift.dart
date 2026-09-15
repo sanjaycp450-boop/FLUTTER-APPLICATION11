@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'google_pay.dart';
-
 class Sentgift extends StatefulWidget {
   const Sentgift({super.key});
 
@@ -96,7 +94,6 @@ class _SentgiftState extends State<Sentgift> {
                     ),
                   ),
 
-                  // Store title
                    Expanded(
                     child: Center(
                       child: Text(
@@ -110,7 +107,6 @@ class _SentgiftState extends State<Sentgift> {
                     ),
                   ),
 
-                  // Coins balance
                   Container(
                     height: 52,
                     width: 125,
@@ -251,25 +247,19 @@ class _SentgiftState extends State<Sentgift> {
 
                           SizedBox(
                             width: double.infinity,
-                            height: 43,
+                            height: 36,
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => GooglePay(),
-                                  ),
-                                );
-                                
+                                showGooglePayBottomSheet(context);
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xff00aa9d),
-                                elevation: 4,
+                                backgroundColor: const Color(0xff00a99d),
+                                elevation: 0,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
-                              child: const Text(
+                              child: Text(
                                 '\$ 33,444 / Month \$ 56.66',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -299,10 +289,10 @@ class _SentgiftState extends State<Sentgift> {
 
                     GridView.builder(
                       shrinkWrap: true,
-                      physics:  NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: coins.length,
                       gridDelegate:
-                           SliverGridDelegateWithFixedCrossAxisCount(
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 18,
                         mainAxisSpacing: 18,
@@ -330,30 +320,6 @@ class _SentgiftState extends State<Sentgift> {
     );
   }
 }
-void openBottomsheet(
-  BuildContext context,
-  String price,
-){
-  showModalBottomSheet(context: context, 
-  backgroundColor: Colors.transparent,
-  isScrollControlled: true,
-  builder: (bottomSheetContext){
-    return Container(
-      width: double.infinity,
-      height: 262,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25),
-          topRight: Radius.circular(25),
-        ),
-      ),
-      child: Padding(padding: padding),
-    )
-  })
-}
-
-
 class CoinCard extends StatelessWidget {
   final String amount;
   final String offer;
@@ -369,117 +335,231 @@ class CoinCard extends StatelessWidget {
     required this.discount,
     required this.image,
   });
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:  EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Discount
-          if (discount.isNotEmpty)
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                padding:  EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            // Image
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  image,
+                  width: double.infinity,
+                  fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(
+                      Icons.monetization_on,
+                      size: 70,
+                      color: Colors.amber,
+                    );
+                  },
                 ),
-                decoration: BoxDecoration(
-                  color:  Color(0xffffe082),
-                  borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
+            // Coin amount
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.monetization_on,
+                  color: Colors.amber,
+                  size: 20,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  amount,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 5),
+
+            // Offer
+            if (offer.isNotEmpty)
+              Text(
+                offer,
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+
+            // Discount
+            if (discount.isNotEmpty)
+              Text(
+                discount,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.green,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+
+            const SizedBox(height: 7),
+
+            // Price button
+            SizedBox(
+              width: double.infinity,
+              height: 36,
+              child: ElevatedButton(
+                onPressed: () {
+                  showGooglePayBottomSheet(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xff00a99d),
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
                 child: Text(
-                  discount,
-                  style:  TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
+                  price,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
             ),
-
-          // Coin image
-          Expanded(
-            child: Image.asset(
-              image,
-              fit: BoxFit.contain,
-              errorBuilder: (context, error, stackTrace) {
-                return  Icon(
-                  Icons.monetization_on,
-                  size: 65,
-                  color: Colors.amber,
-                );
-              },
-            ),
-          ),
-
-           SizedBox(height: 5),
-
-          // Amount
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-               Icon(
-                Icons.monetization_on,
-                color: Colors.amber,
-                size: 20,
-              ),
-               SizedBox(width: 4),
-              Text(
-                amount,
-                style:  TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-
-           SizedBox(height: 6),
-
-          // Offer
-          if (offer.isNotEmpty)
-            Text(
-              offer,
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-              ),
-            ),
-
-          SizedBox(
-            width: double.infinity,
-            height: 38,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GooglePay()),
-                );
-                                
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text('Selected: $price')));
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xff00aa9d),
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                elevation: 2,
-              ),
-              child: Text(price, style: TextStyle(fontWeight: FontWeight.bold)),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
+}
+
+void showGooglePayBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) {
+      return Container(
+        height: 320,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(28),
+            topRight: Radius.circular(28),
+          ),
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 42,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Color(0xff777777), width: 1),
+                ),
+              ),
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "Google pay",
+                style: TextStyle(
+                  color: Color(0xff063875),
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Start by adding a payment method",
+                      style: TextStyle(
+                        color: Color(0xff063875),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    SizedBox(height: 8),
+
+                    Text(
+                      "king@gmail.com",
+                      style: TextStyle(color: Color(0xff063875), fontSize: 12),
+                    ),
+
+                    SizedBox(height: 38),
+
+                    Text(
+                      "Add a payment method to your Google account\n"
+                      "to complete your purchase. Your payment\n"
+                      "information only visible to Google",
+                      style: TextStyle(
+                        color: Color(0xff063875),
+                        fontSize: 12,
+                        height: 1.4,
+                      ),
+                    ),
+
+                    Spacer(),
+
+                    SizedBox(
+                      width: double.infinity,
+                      height: 42,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Add your payment logic here
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff20a495),
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.credit_card,
+                              color: Color(0xff58d9e4),
+                              size: 27,
+                            ),
+
+                            SizedBox(width: 25),
+
+                            Text(
+                              "Add credit or debit card",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }

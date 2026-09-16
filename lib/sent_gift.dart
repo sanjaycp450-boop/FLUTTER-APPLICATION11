@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_11/paymentmethod.dart';
 
 class Sentgift extends StatefulWidget {
   const Sentgift({super.key});
@@ -521,6 +522,14 @@ void showGooglePayBottomSheet(BuildContext context) {
                       height: 42,
                       child: ElevatedButton(
                         onPressed: () {
+                          print("BUTTON PRESSED");
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Paymentmethod(),
+                            ),
+                          );
                           // Add your payment logic here
                         },
                         style: ElevatedButton.styleFrom(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'calls.dart';
+import 'comments.dart';
 import 'gift.dart';
 
 class Massege extends StatefulWidget {
@@ -340,7 +342,7 @@ class _MassegeState extends State<Massege> {
             ),
           ),
 
-          /// Bottom Input
+  
           SafeArea(
             child: Container(
               padding: EdgeInsets.all(10),
@@ -397,7 +399,7 @@ class _MassegeState extends State<Massege> {
       builder: (BuildContext context) {
         return Container(
           height: MediaQuery.of(context).size.height * 0.78,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0xFF20A99E),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(35),
@@ -408,7 +410,7 @@ class _MassegeState extends State<Massege> {
             children: [
               // Header
               Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: 25,
                   vertical: 25,
                 ),
@@ -418,14 +420,14 @@ class _MassegeState extends State<Massege> {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: const Icon(
+                      child: Icon(
                         Icons.close,
                         color: Colors.white,
                         size: 32,
                       ),
                     ),
 
-                    const Expanded(
+                    Expanded(
                       child: Center(
                         child: Text(
                           "Share Content",
@@ -439,12 +441,11 @@ class _MassegeState extends State<Massege> {
                     ),
 
              
-                    const SizedBox(width: 32),
+                    SizedBox(width: 32),
                   ],
                 ),
               ),
 
-              // Camera
               _shareItem(
                 icon: Icons.camera_alt_outlined,
                 title: "Camera",
@@ -455,7 +456,6 @@ class _MassegeState extends State<Massege> {
                 },
               ),
 
-              // Documents
               _shareItem(
                 icon: Icons.description_outlined,
                 title: "Documents",
@@ -466,7 +466,6 @@ class _MassegeState extends State<Massege> {
                 },
               ),
 
-              // Create a poll
               _shareItem(
                 icon: Icons.bar_chart_outlined,
                 title: "Create a poll",
@@ -477,7 +476,6 @@ class _MassegeState extends State<Massege> {
                 },
               ),
 
-              // Media
               _shareItem(
                 icon: Icons.image_outlined,
                 title: "Media",
@@ -490,13 +488,14 @@ class _MassegeState extends State<Massege> {
                 },
               ),
 
-              // Contact
               _shareItem(
                 icon: Icons.person_outline,
                 title: "Contact",
                 subtitle: "Share your contacts",
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.of(
+                    context,
+                  ).push(MaterialPageRoute(builder: (context) => Comments()));
                   // Contact code here
                 },
               ),
@@ -518,7 +517,7 @@ class _MassegeState extends State<Massege> {
     );
   }
 
-  // Share Content Item
+
   Widget _shareItem({
     required IconData icon,
     required String title,
@@ -528,8 +527,8 @@ class _MassegeState extends State<Massege> {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 18),
-        decoration: const BoxDecoration(
+        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 18),
+        decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(color: Color(0x4490D8D2), width: 1),
           ),
@@ -540,23 +539,22 @@ class _MassegeState extends State<Massege> {
             Container(
               width: 70,
               height: 70,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color(0xFFF5FFFF),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, size: 38, color: Colors.grey),
             ),
 
-            const SizedBox(width: 25),
+            SizedBox(width: 25),
 
-            // Text
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,
                       fontWeight: FontWeight.w600,
@@ -564,10 +562,10 @@ class _MassegeState extends State<Massege> {
                   ),
 
                   if (subtitle.isNotEmpty) ...[
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                     Text(
                       subtitle,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Color(0xFF17958C),
                         fontSize: 16,
                       ),

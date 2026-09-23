@@ -14,7 +14,7 @@ class Bottomnav extends StatefulWidget {
   @override
   State<Bottomnav> createState() => _BottomnavState();
 }
-final screens=[HOME_1(),ChooseScreen(),Calls(),Contacts()];
+final screens = [HOME_1(), Calls(), Calls(), Contacts()];
 int currentIndex=0;
 
 class _BottomnavState extends State<Bottomnav> {
@@ -32,8 +32,29 @@ class _BottomnavState extends State<Bottomnav> {
        }); 
       },
       items:[
-        BottomNavigationBarItem(icon: currentIndex==0?Column(children: [Icon(Icons.video_call,color: Colors.black,),SizedBox(height:14,),]):Icon(Icons.video_call,color: Colors.white,),   label: '',),
-        BottomNavigationBarItem(icon: currentIndex==1?Column(children: [Icon(Icons.chat_bubble_outline,color:Colors.black,),SizedBox(height:14),]):Icon(Icons.chat_bubble_outline,color: Colors.white,),   label: '',),
+       
+            BottomNavigationBarItem(
+              icon: currentIndex == 0
+                  ? Column(
+                      children: [
+                        Icon(Icons.chat_bubble_outline, color: Colors.black),
+                        SizedBox(height: 14),
+                      ],
+                    )
+                  : Icon(Icons.chat_bubble_outline, color: Colors.white),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: currentIndex == 1
+                  ? Column(
+                      children: [
+                        Icon(Icons.video_call, color: Colors.black),
+                        SizedBox(height: 14),
+                      ],
+                    )
+                  : Icon(Icons.video_call, color: Colors.white),
+              label: '',
+            ),
         BottomNavigationBarItem(icon: currentIndex==2?Column(children: [Icon(Icons.history,color: Colors.black,),SizedBox(height: 14),]):Icon(Icons.history,color: Colors.white,) ,  label: '',),
         BottomNavigationBarItem(icon: currentIndex==3?Column(children: [Icon(Icons.person,color: Colors.black,),SizedBox(height: 14),]):Icon(Icons.person,color: Colors.white,),  label: '',),
         

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'start_screen.dart';
+
 class Calls extends StatefulWidget {
   const Calls({super.key});
 
@@ -14,13 +16,13 @@ class _CallsState extends State<Calls> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xff20A090),
+        color: const Color(0xff20A090),
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
 
-              Text(
+              const Text(
                 "Video chat",
                 style: TextStyle(
                   color: Colors.white,
@@ -29,7 +31,7 @@ class _CallsState extends State<Calls> {
                 ),
               ),
 
-              SizedBox(height: 70),
+              const SizedBox(height: 260),
 
               SizedBox(
                 width: 390,
@@ -38,24 +40,39 @@ class _CallsState extends State<Calls> {
                   alignment: Alignment.center,
                   clipBehavior: Clip.none,
                   children: [
-                    // OUTER PURPLE CIRCLE
+                    // Outer circle
                     Container(
-                      width: 390,
-                      height: 390,
-                      decoration: BoxDecoration(
+                      width: 391,
+                      height: 391,
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
-                          colors: [Color(0xff5412A9), Color(0xff30166D)],
+                          colors: [Color(0xff5412A9), Color(0xff20A090)],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topLeft,
+                        ),
+                      ),
+                    ),
+
+                    // Middle circle
+                    Container(
+                      width: 290,
+                      height: 290,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          colors: [Color(0xff5412A9), Color(0xff3A1379)],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                       ),
                     ),
 
+                    // Inner circle
                     Container(
-                      width: 220,
-                      height: 220,
-                      decoration: BoxDecoration(
+                      width: 216,
+                      height: 216,
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
                           colors: [Color(0xff7020D0), Color(0xff321A76)],
@@ -64,7 +81,7 @@ class _CallsState extends State<Calls> {
                         ),
                       ),
                       alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                         "mattiunlike",
                         style: TextStyle(
                           color: Colors.white,
@@ -74,40 +91,43 @@ class _CallsState extends State<Calls> {
                       ),
                     ),
 
-                    // FEMALE
+                    // Female
                     Positioned(
-                      left: 44,
+                      left: 54,
                       bottom: 20,
                       child: _profileContainer(
                         image:
                             'assets/image/697488f82fe35c63cde00c85c39499cf44d1c764.png',
                         label: 'Female',
-                        backgroundColor: Color(0xff7416E8),
+                        backgroundColor: const Color(0xff7416E8),
                         borderColor: Colors.black,
                       ),
                     ),
 
+                    // Both
                     Positioned(
                       left: 160,
                       bottom: 0,
                       child: _profileContainer(
-                        image:
+                        image1:
+                            'assets/image/697488f82fe35c63cde00c85c39499cf44d1c764.png',
+                        image2:
                             'assets/image/8d75a9894edefa11eb527031888aeb3b0d76b5c6.png',
                         label: 'Both',
-                        backgroundColor: Color(0xff20A090),
+                        backgroundColor: const Color(0xff20A090),
                         borderColor: Colors.white,
                       ),
                     ),
 
+                    // Male
                     Positioned(
                       right: 35,
                       bottom: 20,
                       child: _profileContainer(
                         image:
                             'assets/image/8d75a9894edefa11eb527031888aeb3b0d76b5c6.png',
-
                         label: 'Male',
-                        backgroundColor: Color(0xff7416E8),
+                        backgroundColor: const Color(0xff7416E8),
                         borderColor: Colors.black,
                       ),
                     ),
@@ -121,40 +141,63 @@ class _CallsState extends State<Calls> {
     );
   }
 
-  // PROFILE CONTAINER
+  // Profile container
   Widget _profileContainer({
-    required String image,
+    String? image,
+    String? image1,
+    String? image2,
     required String label,
     required Color backgroundColor,
     required Color borderColor,
   }) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          width: 67,
-          height: 67,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: backgroundColor,
-            border: Border.all(color: borderColor, width: 2),
-          ),
-          child: ClipOval(
-            child: Padding(
-              padding: const EdgeInsets.all(5),
-              child: Image.asset(
-                image,
-                width: 57,
-                height: 57,
-                fit: BoxFit.contain,
-
-                // Shows an error if the asset path is wrong
-                errorBuilder: (context, error, stackTrace) {
-                  return const Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 35,
+        Material(
+          elevation: 10,
+          shadowColor: Colors.black.withOpacity(0.5),
+          shape: const CircleBorder(),
+          color: backgroundColor,
+          child: Container(
+            width: 67,
+            height: 67,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: backgroundColor,
+              border: Border.all(color: borderColor, width: 2),
+            ),
+            child: ClipOval(
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => StartScreen()),
                   );
+                  if (label == "Female") {
+                    print("Female selected");
+                  } else if (label == "Both") {
+                    print("Both selected");
+                  } else if (label == "Male") {
+                    print("Male selected");
+                  }
                 },
+                icon: image1 != null && image2 != null
+                    ? Row(
+                        children: [
+                          Expanded(
+                            child: Image.asset(image1, fit: BoxFit.cover),
+                          ),
+                          Expanded(
+                            child: Image.asset(image2, fit: BoxFit.cover),
+                          ),
+                        ],
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Image.asset(
+                          image!, fit: BoxFit.contain),
+                      ),
               ),
             ),
           ),

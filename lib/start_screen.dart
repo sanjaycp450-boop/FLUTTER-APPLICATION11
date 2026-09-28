@@ -117,7 +117,7 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                 ),
               ),
-              // ================= TOP RIGHT ICON =================
+  
               Positioned(
                  top: 27,
                     right: 20,
@@ -136,7 +136,11 @@ class _StartScreenState extends State<StartScreen> {
           padding: EdgeInsets.zero,
           constraints:   BoxConstraints(),
           onPressed: () {
-        Navigator.push(context,MaterialPageRoute(builder: (context)=>IncomingCalls()),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => IncomingCallApp(),
+                            ),
         );
 
           },

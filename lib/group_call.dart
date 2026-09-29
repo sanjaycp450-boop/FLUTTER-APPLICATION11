@@ -198,7 +198,6 @@ class _GroupCallState extends State<GroupCall> {
                               size: 46,
                             ),
 
-                            // Chat
                             _bottomButton(
                               icon: Icons.chat_bubble_outline,
                               backgroundColor: const Color(0xff20A090),
@@ -207,19 +206,19 @@ class _GroupCallState extends State<GroupCall> {
                             ),
 
 
-const SizedBox(width: 1),
+                            const SizedBox(width: 1),
 
-GestureDetector(
-  onTap: () {
-    Navigator.pop(context);
-  },
-  child: _bottomButton(
-    icon: Icons.close,
-    backgroundColor: Colors.red,
-    iconColor: Colors.white,
-    size: 46,
-  ),
-),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: _bottomButton(
+                                icon: Icons.close,
+                                backgroundColor: Colors.red,
+                                iconColor: Colors.white,
+                                size: 46,
+                              ),
+                            ),
                           ],
                         ),
                       ),

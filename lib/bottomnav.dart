@@ -3,8 +3,9 @@ import 'package:flutter_application_11/home_1.dart';
 // import 'package:flutter_application_11/home_delect.dart';
 
 import 'calls.dart';
-import 'choose_screen.dart';
+// import 'choose_screen.dart';
 import 'contacts.dart';
+import 'recent.dart';
 // import 'following.dart';
 // import 'settings.dart';
 
@@ -14,7 +15,7 @@ class Bottomnav extends StatefulWidget {
   @override
   State<Bottomnav> createState() => _BottomnavState();
 }
-final screens = [HOME_1(), Calls(), Calls(), Contacts()];
+final screens = [HOME_1(), Calls(), Recent(), Contacts()];
 int currentIndex=0;
 
 class _BottomnavState extends State<Bottomnav> {

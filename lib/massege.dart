@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'comments.dart';
 import 'gift.dart';
+import 'poll.dart';
 
 class Massege extends StatefulWidget {
   final String name;
@@ -460,7 +461,7 @@ class _MassegeState extends State<Massege> {
                 subtitle: "Share your files",
                 onTap: () {
                   Navigator.pop(context);
-                  // Document picker code here
+        
                 },
               ),
 
@@ -469,7 +470,9 @@ class _MassegeState extends State<Massege> {
                 title: "Create a poll",
                 subtitle: "Create a poll for any query",
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.of(
+                    context,
+                  ).push(MaterialPageRoute(builder: (context) => Poll()));
                   // Poll code here
                 },
               ),
@@ -498,7 +501,6 @@ class _MassegeState extends State<Massege> {
                 },
               ),
 
-              // Location
               _shareItem(
                 icon: Icons.location_on_outlined,
                 title: "Location",

@@ -1,4 +1,8 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
+
+import 'people_search.dart';
 
 class Contacts extends StatefulWidget {
   const Contacts({super.key});
@@ -63,8 +67,18 @@ class _ContactsState extends State<Contacts> {
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   children: [
-                    // Search
-                    _circleButton(icon: Icons.search, onTap: () {}),
+
+                    _circleButton(
+                      icon: Icons.search,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PeopleSearchPage(),
+                          ),
+                        );
+                      },
+                    ),
 
                     // Title
                     const Expanded(
@@ -98,8 +112,8 @@ class _ContactsState extends State<Contacts> {
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(28),
                     topRight: Radius.circular(28),
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
+                    bottomLeft: Radius.circular(6),
+                    bottomRight: Radius.circular(6),
                   ),
                 ),
                 child: Column(
@@ -249,7 +263,7 @@ class _ContactsState extends State<Contacts> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    fontSize: 7.5,
+                    fontSize: 10.5,
                     fontWeight: FontWeight.w400,
                     color: Color(0xFF858585),
                   ),

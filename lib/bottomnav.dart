@@ -6,6 +6,7 @@ import 'calls.dart';
 // import 'choose_screen.dart';
 import 'contacts.dart';
 import 'recent.dart';
+import 'settings.dart';
 // import 'following.dart';
 // import 'settings.dart';
 
@@ -15,7 +16,7 @@ class Bottomnav extends StatefulWidget {
   @override
   State<Bottomnav> createState() => _BottomnavState();
 }
-final screens = [HOME_1(), Calls(), Recent(), Contacts()];
+final screens = [HOME_1(), Calls(), Recent(), Settings()];
 int currentIndex=0;
 
 class _BottomnavState extends State<Bottomnav> {

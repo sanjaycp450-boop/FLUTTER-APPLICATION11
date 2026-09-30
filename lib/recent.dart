@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'people_search.dart';
+
 class Recent extends StatefulWidget {
   const Recent({super.key});
 
@@ -89,9 +91,15 @@ class _RecentState extends State<Recent> {
                     ),
 
                     _circleButton(
-                      icon: Icons.add_call,
+                      icon: Icons.person,
                       onTap: () {
-                        // Add call action
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PeopleSearchPage(),
+                          ),
+                        );
+                       
                       },
                     ),
                   ],
@@ -398,24 +406,6 @@ class _RecentState extends State<Recent> {
               ),
             );
           },
-        ),
-      ),
-    );
-  }
-  Widget _bottomIcon({
-    required IconData icon,
-    bool selected = false,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: SizedBox(
-        width: 50,
-        height: 50,
-        child: Icon(
-          icon,
-          size: 27,
-          color: selected ? Colors.black : Colors.black,
         ),
       ),
     );

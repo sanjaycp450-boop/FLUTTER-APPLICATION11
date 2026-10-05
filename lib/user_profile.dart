@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'following_page.dart';
+
+
 class ProfileDetailsPage extends StatefulWidget {
   const ProfileDetailsPage({super.key});
 
@@ -279,6 +282,13 @@ class _ProfileDetailsPageState extends State<ProfileDetailsPage> {
 
                               GestureDetector(
                                 onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          TrendingCreatorsPage(),
+                                    ),
+                                  );
                                   // View all media
                                 },
                                 child: const Text(

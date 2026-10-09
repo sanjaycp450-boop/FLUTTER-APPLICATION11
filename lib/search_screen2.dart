@@ -263,9 +263,9 @@ class _SearchPageState extends State<SearchPage> {
             details: '555532 followers · 234 videos',
           ),
 
-          const SizedBox(height: 22),
+          const SizedBox(height: 20),
 
-          // VIDEO GRID
+        
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -273,24 +273,106 @@ class _SearchPageState extends State<SearchPage> {
                 child: _videoCard(
                   image:
                       'assets/image/8800f3d252e8b3e6a88d4cfa0f1b57b5aa47c66d (1).png',
+                      
                   topLike: true,
                   date: '11/21/2022',
+                 
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 20),
               Expanded(
                 child: Column(
                   children: [
-                    _smallVideo(
+                    Container(
+                      width: 105,
+                      height: 83,
+                      margin: const EdgeInsets.only(top: 100),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          // White comment box
+                          Container(
+                            width: 105,
+                            height: 43,
+                            padding: const EdgeInsets.only(
+                              left: 15,
+                              right: 8,
+                              top: 10,
+                            ),
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Small profile image
+                                ClipOval(
+                                  child: Image.asset(
+                                    'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
+                                    width: 20,
+                                    height: 20,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+
+                                const SizedBox(width: 20),
+
+                                // Comment text
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Reply to id 3421',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 5,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 2),
+                                      const Text(
+                                        'comment',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 7,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 3),
+                                      const Text(
+                                        'MY favorite boykaas',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 6,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          // Small pointed tail
+                          Positioned(
+                            left: 0,
+                            top: 43,
+                            child: CustomPaint(size: const Size(11, 10)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    _videoCard(
                       image:
                           'assets/image/2313ff651dfd9756145f641d69664045cc28d54c.png',
-                      height: 81,
-                    ),
-                    const SizedBox(height: 10),
-                    _smallVideo(
-                      image:
-                          'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
-                      height: 100,
+                      topLike: false,
+                      date: '11/21/2022',
                     ),
                   ],
                 ),
@@ -305,34 +387,34 @@ class _SearchPageState extends State<SearchPage> {
               Expanded(
                 child: _videoInfo(
                   profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+                      'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
                 ),
               ),
               const SizedBox(width: 8),
               Expanded(
                 child: _videoInfo(
                   profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+                      'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
                 ),
               ),
             ],
           ),
 
-          const SizedBox(height: 14),
+          const SizedBox(height: 100),
 
           Row(
             children: [
               Expanded(
                 child: _bottomVideo(
                   image:
-                      'assets/image/8800f3d252e8b3e6a88d4cfa0f1b57b5aa47c66d (1).png',
+                      'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
                 ),
               ),
               const SizedBox(width: 8),
               Expanded(
                 child: _bottomVideo(
                   image:
-                      'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
+                      'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
                 ),
               ),
             ],
@@ -363,25 +445,27 @@ class _SearchPageState extends State<SearchPage> {
   }
 
 
-  Widget _videosContent() {
+
+Widget _videosContent() {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(14),
       child: Column(
         children: [
+          // First row: Videos
           Row(
             children: [
               Expanded(
                 child: _bottomVideo(
                   image:
-                      'assets/image/8800f3d252e8b3e6a88d4cfa0f1b57b5aa47c66d (1).png',
+                      'assets/image/92d2a21a9c2946aa45bd7fbeebb52766238eee3f (1).png',
                 ),
               ),
               const SizedBox(width: 5),
               Expanded(
                 child: _bottomVideo(
                   image:
-                      'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
+                      'assets/image/8e8bc90c4431a5fc06f30229c0fddc5727694cd9 (1).png',
                 ),
               ),
             ],
@@ -389,19 +473,107 @@ class _SearchPageState extends State<SearchPage> {
 
           const SizedBox(height: 8),
 
+          // First row: Video information
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: _videoInfo(
+                  profile:
+                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: _videoInfo(
+                  profile:
+                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 9),
+
+          // Second row: Videos
           Row(
             children: [
               Expanded(
                 child: _bottomVideo(
                   image:
-                      'assets/image/92d2a21a9c2946aa45bd7fbeebb52766238eee3f.png',
+                      'assets/image/d6daedc431724da7f805ac878779a0a2b5f4a9de (1).png',
                 ),
               ),
               const SizedBox(width: 5),
               Expanded(
                 child: _bottomVideo(
                   image:
-                      'assets/image/92d2a21AziGRT61CE9bvyEo7VeGnPGcovJ2MhmPi.png',
+                      'assets/image/5418a135df05f7be7256767a39e34f13b07eb4ae (1).png',
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 8),
+
+          // Second row: Video information
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: _videoInfo(
+                  profile:
+                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: _videoInfo(
+                  profile:
+                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 9),
+
+          // Third row: Videos
+          Row(
+            children: [
+              Expanded(
+                child: _bottomVideo(
+                  image:
+                      'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
+                ),
+              ),
+              const SizedBox(width: 5),
+              Expanded(
+                child: _bottomVideo(
+                  image:
+                      'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 8),
+
+          // Third row: Video information
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: _videoInfo(
+                  profile:
+                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: _videoInfo(
+                  profile:
+                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
                 ),
               ),
             ],
@@ -410,8 +582,6 @@ class _SearchPageState extends State<SearchPage> {
       ),
     );
   }
-
-
   Widget _usersContent() {
     return ListView(
       physics: const BouncingScrollPhysics(),
@@ -522,77 +692,396 @@ class _SearchPageState extends State<SearchPage> {
       ],
     );
   }
+Widget _soundsContent() {
+    final List<Map<String, String>> sounds = [
+      {
+        'image':
+            'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
+        'title': 'boykaa.pubjii game',
+        'duration': '01:00',
+        'videos': '234k videos',
+      },
+      {
+        'image': 'assets/image/508d13b70c8ff36009c509fb558a75dbf28957a7.png',
+        'title': 'boykaa.full movie',
+        'duration': '01:00',
+        'videos': '234k videos',
+      },
+      {
+        'image': 'assets/image/a659570ab60381840f5dfb0c1bee22c82ddc4834.png',
+        'title': 'boykaa.f2heeeee',
+        'duration': '01:00',
+        'videos': '234k videos',
+      },
+      {
+        'image': 'assets/image/26a0572dedb0e5e0c10b7ab9747c62bb181fd03e.png',
+        'title': 'boykaa.llllt4443',
+        'duration': '01:00',
+        'videos': '2354k videos',
+      },
+      {
+        'image': 'assets/image/6e35df98c3a1b0e2626286d0babd0c2e286a3a9c.png',
+        'title': 'boykaa55555555',
+        'duration': '02:00',
+        'videos': '2634k videos',
+      },
+      {
+        'image': 'assets/image/b419c68efd7bdf31a101f9782bf8dc7146274667.png',
+        'title': 'boykaa.44444444',
+        'duration': '03:00',
+        'videos': '2334k videos',
+      },
+      {
+        'image': 'assets/image/af083998ccfbee4fadd7f365a862f3b21e7c4f09.png',
+        'title': 'boykaa.full 3444',
+        'duration': '03:00',
+        'videos': '2334k videos',
+      },
+      {
+        'image': 'assets/image/b419c68efd7bdf31a101f9782bf8dc7146274667.png',
+        'title': 'boykaa.ddddddd',
+        'duration': '01:00',
+        'videos': '2334k videos',
+      },
+      {
+        'image': 'assets/image/4db65cd9ce305ea514c98704b56a9f6180f91f02.png',
+        'title': 'boykaa.4444555',
+        'duration': '04:00',
+        'videos': '2334k videos',
+      },
+      {
+        'image': 'assets/image/26a0572dedb0e5e0c10b7ab9747c62bb181fd03e.png',
+        'title': 'boykaa.5588888',
+        'duration': '03:00',
+        'videos': '23354k videos',
+      },
+      {
+        'image': 'assets/image/b419c68efd7bdf31a101f9782bf8dc7146274667.png',
+        'title': 'Boykaa4444444',
+        'duration': '02:00',
+        'videos': '23234k videos',
+      },
+    ];
 
-  Widget _soundsContent() {
-    return ListView(
+    return Container(
+      color: bgColor,
+      child: ListView.builder(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.all(14),
-      children: [
-        _simpleItem(
-          icon: Icons.music_note,
-          title: 'Original sound - boykaa',
-        ),
-        _simpleItem(
-          icon: Icons.music_note,
-          title: 'Original sound - full movie',
-        ),
-        _simpleItem(
-          icon: Icons.music_note,
-          title: 'Trending sound',
-        ),
-      ],
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+        itemCount: sounds.length,
+        itemBuilder: (context, index) {
+          final sound = sounds[index];
+
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: SizedBox(
+              height: 72,
+              child: Row(
+                children: [
+                  // Video thumbnail
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(6),
+                    child: SizedBox(
+                      width: 51,
+                      height: 51,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Image.asset(
+                            sound['image']!,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                color: Colors.white,
+                                child: const Icon(
+                                  Icons.play_circle_filled,
+                                  color: Colors.red,
+                                  size: 35,
+                                ),
+                              );
+                            },
+                          ),
+                          Container(color: Colors.black.withOpacity(0.12)),
+                          const Center(
+                            child: Icon(
+                              Icons.play_arrow,
+                              color: Colors.white,
+                              size: 28,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(width: 13),
+
+                  // Sound information
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          sound['title']!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        const Text(
+                          'boykaa',
+                          style: TextStyle(color: Colors.white, fontSize: 10),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          '${sound['duration']} ${sound['videos']}',
+                          maxLines: 1,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 9,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(width: 8),
+
+                  // Red video button
+                  Padding(
+                    padding: const EdgeInsets.only(right: 18),
+                    child: SizedBox(
+                      width: 71,
+                      height: 28,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Add your video navigation here.
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFFF2028),
+                          foregroundColor: Colors.white,
+                          elevation: 0,
+                          padding: EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.video_call,
+                          size: 21,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 
 
   Widget _placesContent() {
-    return ListView(
+    final List<Map<String, String>> places = [
+      {'title': 'Boykataa', 'name': 'boykaa', 'details': '01:00. 234k videos'},
+      {
+        'title': 'boykaa.metai',
+        'name': 'company',
+        'details': '01:00. 234k videos',
+      },
+      {
+        'title': 'boykaa.f2beeeee',
+        'name': 'boykaa',
+        'details': '01:00. 234k videos',
+      },
+      {
+        'title': 'boykaa.11114443',
+        'name': 'boykaa',
+        'details': '01:00. 2354k videos',
+      },
+      {
+        'title': 'boykaa55555555',
+        'name': 'boykaa',
+        'details': '02:00. 2634k videos',
+      },
+      {
+        'title': 'boykaa.44444444',
+        'name': 'boykaa',
+        'details': '03:00. 2334k videos',
+      },
+      {
+        'title': 'boykaa.full 34444',
+        'name': 'boykaa',
+        'details': '03:00. 2334k videos',
+      },
+      {
+        'title': 'boykaa.dddddddd',
+        'name': 'boykaa',
+        'details': '01:00. 2334k videos',
+      },
+      {
+        'title': 'boykaa.4444555',
+        'name': 'boykaa',
+        'details': '04:00. 2334k videos',
+      },
+      {
+        'title': 'boykaa.5588888',
+        'name': 'boykaa',
+        'details': '03:00. 23354k videos',
+      },
+      {
+        'title': 'Boykaa4444444',
+        'name': 'boykaa',
+        'details': '02:00. 23234k videos',
+      },
+    ];
+
+    return Container(
+      color: const Color(0xff20A090),
+      child: ListView.builder(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.all(14),
-      children: [
-        _simpleItem(
-          icon: Icons.location_on_outlined,
-          title: 'Boykaa Place',
-        ),
-        _simpleItem(
-          icon: Icons.location_on_outlined,
-          title: 'Popular Places',
-        ),
-        _simpleItem(
-          icon: Icons.location_on_outlined,
-          title: 'Nearby Places',
-        ),
-      ],
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+        itemCount: places.length,
+        itemBuilder: (context, index) {
+          final place = places[index];
+
+          return SizedBox(
+            height: 69,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 40,
+                  child: Icon(Icons.location_on, color: Colors.white, size: 25),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        place['title']!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        place['name']!,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                      const SizedBox(height: 1),
+                      Text(
+                        place['details']!,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
+Widget _hashtagsContent() {
+    final List<Map<String, String>> hashtags = [
+      {'name': 'boykaafilm', 'views': '2345 views'},
+      {'name': 'boyka full farm', 'views': '22225 views'},
+      {'name': 'boyka44film', 'views': '12233 views'},
+      {'name': 'boykaaf44m', 'views': '12233 views'},
+      {'name': 'full movie', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '12233 views'},
+      {'name': 'boykaafilm', 'views': '55233 views'},
+    ];
 
-  Widget _hashtagsContent() {
-    return ListView(
+    return Container(
+      color: const Color(0xff20A090),
+      child: ListView.builder(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.all(14),
-      children: [
-        _simpleItem(
-          icon: Icons.tag,
-          title: '#fyp',
-        ),
-        _simpleItem(
-          icon: Icons.tag,
-          title: '#viralvideo',
-        ),
-        _simpleItem(
-          icon: Icons.tag,
-          title: '#boykaa',
-        ),
-        _simpleItem(
-          icon: Icons.tag,
-          title: '#fullmovie',
-        ),
-        _simpleItem(
-          icon: Icons.tag,
-          title: '#trending',
-        ),
-      ],
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+        itemCount: hashtags.length,
+        itemBuilder: (context, index) {
+          final hashtag = hashtags[index];
+
+          return SizedBox(
+            height: 42,
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 16,
+                  child: Text(
+                    '#',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 21),
+
+                Expanded(
+                  child: Text(
+                    hashtag['name']!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 8),
+
+                Text(
+                  hashtag['views']!,
+                  style: const TextStyle(
+                    color: Color(0xffD0E8E5),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 

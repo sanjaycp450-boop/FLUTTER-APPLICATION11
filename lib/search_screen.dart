@@ -49,7 +49,6 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
 
-              // Globe
               Positioned(
                 top: 196,
                 left: 28,

@@ -45,7 +45,6 @@ class _SearchPageState extends State<SearchPage> {
                   children: [
                     const SizedBox(width: 19),
 
-                    // BACK BUTTON
                     GestureDetector(
                       onTap: () {
                         Navigator.pop(context);
@@ -59,7 +58,7 @@ class _SearchPageState extends State<SearchPage> {
 
                     const SizedBox(width: 17),
 
-                    // SEARCH ICON
+      
                     const Icon(
                       Icons.search,
                       color: Colors.white70,
@@ -68,10 +67,10 @@ class _SearchPageState extends State<SearchPage> {
 
                     const SizedBox(width: 19),
 
-                    // SEARCH TEXT
+           
                     const Expanded(
                       child: Text(
-                        'boykaa full movie',
+                        '',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -81,7 +80,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
 
-                    // CLOSE BUTTON
+
                     GestureDetector(
                       onTap: () {
                         Navigator.pop(context);
@@ -140,7 +139,7 @@ class _SearchPageState extends State<SearchPage> {
                                 ),
                               ),
 
-                              // SELECTED TAB LINE
+                              
                               if (selectedTab == index)
                                 Container(
                                   height: 2,
@@ -203,20 +202,33 @@ class _SearchPageState extends State<SearchPage> {
   }
 
 
-  Widget _topContent() {
-    return SingleChildScrollView(
+  final List<String> userImages = [
+    'assets/image/1314845182e225e5bd6faf5f88081773d5031ffd.png',
+    'assets/image/f20dee0f970d0386f59cbba9f60ec91e9ca890ec.png',
+  ];
+
+  final List<String> videoImages = [
+    'assets/image/8800f3d252e8b3e6a88d4cfa0f1b57b5aa47c66d (1).png',
+    'assets/image/2313ff651dfd9756145f641d69664045cc28d54c.png',
+  ];
+
+  final List<String> profileImages = [
+    'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
+    'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+    'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
+  ];
+    
+Widget _topContent() {
+
+    return ListView.builder(
+      shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.only(
-        left: 14,
-        right: 14,
-        top: 20,
-        bottom: 20,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // USERS TITLE
-          Row(
+      padding: const EdgeInsets.only(left: 14, right: 14, top: 20, bottom: 20),
+      itemCount: 8,
+      itemBuilder: (context, index) {
+        switch (index) {
+          case 0:
+            return Row(
             children: [
               const Text(
                 'Users',
@@ -241,347 +253,277 @@ class _SearchPageState extends State<SearchPage> {
                 size: 17,
               ),
             ],
-          ),
+            );
 
-          const SizedBox(height: 17),
-
-          _userItem(
-            image:
-                'assets/image/1314845182e225e5bd6faf5f88081773d5031ffd.png',
-            username: 'boykaa.pubjii game',
-            name: 'boykaa',
-            details: '555532 followers · 234 videos',
-          ),
-
-          const SizedBox(height: 15),
-
-          _userItem(
-            image:
-                'assets/image/f20dee0f970d0386f59cbba9f60ec91e9ca890ec.png',
-            username: 'boykaa.full movie',
-            name: 'boykaa',
-            details: '555532 followers · 234 videos',
-          ),
-
-          const SizedBox(height: 20),
-
-        
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: _videoCard(
-                  image:
-                      'assets/image/8800f3d252e8b3e6a88d4cfa0f1b57b5aa47c66d (1).png',
-                      
-                  topLike: true,
-                  date: '11/21/2022',
-                 
-                ),
+          case 1:
+            return Padding(
+              padding: const EdgeInsets.only(top: 17),
+              child: _userItem(
+                image: userImages[0],
+                username: 'boykaa.pubjii game',
+                name: 'boykaa',
+                details: '555532 followers · 234 videos',
               ),
-              const SizedBox(width: 20),
-              Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 105,
-                      height: 83,
-                      margin: const EdgeInsets.only(top: 100),
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          // White comment box
-                          Container(
-                            width: 105,
-                            height: 43,
-                            padding: const EdgeInsets.only(
-                              left: 15,
-                              right: 8,
-                              top: 10,
-                            ),
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Small profile image
-                                ClipOval(
-                                  child: Image.asset(
-                                    'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
-                                    width: 20,
-                                    height: 20,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
+            );
 
-                                const SizedBox(width: 20),
+          case 2:
+            return Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: _userItem(
+                image: userImages[1],
+                username: 'boykaa.full movie',
+                name: 'boykaa',
+                details: '555532 followers · 234 videos',
+              ),
+            );
 
-                                // Comment text
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'Reply to id 3421',
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 5,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 2),
-                                      const Text(
-                                        'comment',
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 7,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 3),
-                                      const Text(
-                                        'MY favorite boykaas',
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 6,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          // Small pointed tail
-                          Positioned(
-                            left: 0,
-                            top: 43,
-                            child: CustomPaint(size: const Size(11, 10)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    _videoCard(
-                      image:
-                          'assets/image/2313ff651dfd9756145f641d69664045cc28d54c.png',
-                      topLike: false,
+          case 3:
+            return Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: _videoCard(
+                      image: videoImages[0],
+                      topLike: true,
                       date: '11/21/2022',
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 105,
+                          height: 83,
+                          margin: const EdgeInsets.only(top: 100),
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                width: 105,
+                                height: 43,
+                                padding: const EdgeInsets.only(
+                                  left: 15,
+                                  right: 8,
+                                  top: 10,
+                                ),
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipOval(
+                                      child: Image.asset(
+                                        profileImages[2],
+                                        width: 20,
+                                        height: 20,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            'Reply to id 3421',
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 5,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 2),
+                                          const Text(
+                                            'comment',
+                                            style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 7,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 3),
+                                          const Text(
+                                            'MY favorite boykaas',
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 6,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                left: 0,
+                                top: 43,
+                                child: CustomPaint(size: const Size(11, 10)),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 50),
+                        _videoCard(
+                          image: videoImages[1],
+                          topLike: false,
+                          date: '11/21/2022',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
 
-          const SizedBox(height: 10),
-
-          Row(
-            children: [
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
-                ),
+          case 4:
+            return Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                children: [
+                  Expanded(child: _videoInfo(profile: profileImages[0])),
+                  const SizedBox(width: 8),
+                  Expanded(child: _videoInfo(profile: profileImages[0])),
+                ],
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
-                ),
-              ),
-            ],
-          ),
+            );
 
-          const SizedBox(height: 100),
+          case 5:
+            return const SizedBox(height: 100);
 
-          Row(
+          case 6:
+            return Row(
             children: [
               Expanded(
                 child: _bottomVideo(
-                  image:
-                      'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
+                  image: profileImages[2],
                 ),
               ),
               const SizedBox(width: 8),
               Expanded(
                 child: _bottomVideo(
-                  image:
-                      'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
+                  image: profileImages[0],
                 ),
               ),
             ],
-          ),
+            );
 
-          const SizedBox(height: 9),
+          case 7:
+            return Padding(
+              padding: const EdgeInsets.only(top: 9),
+              child: Row(
+                children: [
+                  Expanded(child: _videoInfo(profile: profileImages[1])),
+                  const SizedBox(width: 8),
+                  Expanded(child: _videoInfo(profile: profileImages[1])),
+                ],
+              ),
+            );
 
-          Row(
-            children: [
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+          default:
+            return const SizedBox.shrink();
+        }
+      },
     );
   }
-
-
 
 Widget _videosContent() {
-    return SingleChildScrollView(
+    final List<Map<String, String>> videos = [
+      {
+        'image': 'assets/image/2313ff651dfd9756145f641d69664045cc28d54c.png',
+        'profile': 'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+      },
+      {
+        'image':
+            'assets/image/8e8bc90c4431a5fc06f30229c0fddc5727694cd9 (1).png',
+        'profile': 'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+      },
+      {
+        'image':
+            'assets/image/d6daedc431724da7f805ac878779a0a2b5f4a9de (1).png',
+        'profile': 'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+      },
+      {
+        'image':
+            'assets/image/5418a135df05f7be7256767a39e34f13b07eb4ae (1).png',
+        'profile': 'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+      },
+      {
+        'image': 'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
+        'profile': 'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+      },
+      {
+        'image':
+            'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
+        'profile': 'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
+      },
+    ];
+
+    return ListView.builder(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(14),
-      child: Column(
-        children: [
-          // First row: Videos
-          Row(
+      itemCount: (videos.length / 2).ceil(),
+      itemBuilder: (context, index) {
+        final firstIndex = index * 2;
+        final secondIndex = firstIndex + 1;
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 12),
+          child: Column(
             children: [
-              Expanded(
-                child: _bottomVideo(
-                  image:
-                      'assets/image/92d2a21a9c2946aa45bd7fbeebb52766238eee3f (1).png',
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: _bottomVideo(
+                    image: videos[firstIndex]['image']!),
+                  ),
+                  const SizedBox(width: 5),
+                  if (secondIndex < videos.length)
+                    Expanded(
+                      child: _bottomVideo(
+                      image: videos[secondIndex]['image']!),
+                    )
+                  else
+                    const Expanded(child: SizedBox()),
+                ],
               ),
-              const SizedBox(width: 5),
-              Expanded(
-                child: _bottomVideo(
-                  image:
-                      'assets/image/8e8bc90c4431a5fc06f30229c0fddc5727694cd9 (1).png',
-                ),
+
+              const SizedBox(height: 8),
+
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: _videoInfo(
+                    profile: videos[firstIndex]['profile']!),
+                  ),
+                  const SizedBox(width: 8),
+                  if (secondIndex < videos.length)
+                    Expanded(
+                      child: _videoInfo(
+                        profile: videos[secondIndex]['profile']!,
+                      ),
+                    )
+                  else
+                    const Expanded(child: SizedBox()),
+                ],
               ),
             ],
           ),
-
-          const SizedBox(height: 8),
-
-          // First row: Video information
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 9),
-
-          // Second row: Videos
-          Row(
-            children: [
-              Expanded(
-                child: _bottomVideo(
-                  image:
-                      'assets/image/d6daedc431724da7f805ac878779a0a2b5f4a9de (1).png',
-                ),
-              ),
-              const SizedBox(width: 5),
-              Expanded(
-                child: _bottomVideo(
-                  image:
-                      'assets/image/5418a135df05f7be7256767a39e34f13b07eb4ae (1).png',
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 8),
-
-          // Second row: Video information
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 9),
-
-          // Third row: Videos
-          Row(
-            children: [
-              Expanded(
-                child: _bottomVideo(
-                  image:
-                      'assets/image/33f65305c560c35ebf50650599a64ed83a33593d.png',
-                ),
-              ),
-              const SizedBox(width: 5),
-              Expanded(
-                child: _bottomVideo(
-                  image:
-                      'assets/image/55262448f673f4659e9c90bdf5a704dfaa4b0194 (1).png',
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 8),
-
-          // Third row: Video information
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: _videoInfo(
-                  profile:
-                      'assets/image/fa2e30506863e05306ebdb91f574af11e2c26614.png',
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+        );
+      },
     );
-  }
+}
+
   Widget _usersContent() {
     return ListView(
       physics: const BouncingScrollPhysics(),
@@ -600,7 +542,7 @@ Widget _videosContent() {
           details: '555532 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -610,7 +552,7 @@ Widget _videosContent() {
           details: '555532 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -620,7 +562,7 @@ Widget _videosContent() {
           details: '555532 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -630,7 +572,7 @@ Widget _videosContent() {
           details: '555532 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -640,7 +582,7 @@ Widget _videosContent() {
           details: '555532 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -650,7 +592,7 @@ Widget _videosContent() {
           details: '555532 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -660,7 +602,7 @@ Widget _videosContent() {
           details: '999992 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -670,7 +612,7 @@ Widget _videosContent() {
           details: '666666 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -680,7 +622,7 @@ Widget _videosContent() {
           details: '333333 followers · 234 videos',
         ),
 
-        const SizedBox(height: 35),
+        const SizedBox(height: 40),
 
         _userItem(
           image:
@@ -954,7 +896,7 @@ Widget _soundsContent() {
           final place = places[index];
 
           return SizedBox(
-            height: 69,
+            height: 90,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

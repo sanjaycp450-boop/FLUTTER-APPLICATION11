@@ -224,7 +224,6 @@ class _PeopleSearchPageState extends State<PeopleSearchPage> {
 
           const SizedBox(width: 12),
 
-          // NAME + SUBTITLE
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,7 +269,7 @@ class _PeopleSearchPageState extends State<PeopleSearchPage> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // GROUP PROFILE IMAGES
+     
           SizedBox(
             width: 52,
             height: 46,
@@ -287,7 +286,6 @@ class _PeopleSearchPageState extends State<PeopleSearchPage> {
                   ),
                 ),
 
-                // SECOND IMAGE
                 Positioned(
                   left: 8,
                   top: 3,
@@ -297,7 +295,6 @@ class _PeopleSearchPageState extends State<PeopleSearchPage> {
                   ),
                 ),
 
-                // FIRST IMAGE
                 Positioned(
                   left: 0,
                   top: 0,
